@@ -1,40 +1,50 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
-#include <stdio.h>
 
-void print_char(char ch);
-void print_string(char *str);
+/**
+ * print_char - a function that prints single character
+ * @ch: character to be printed
+ *
+ */
 
 void print_char(char ch)
 {
-	putchar(ch);
+	_putchar(ch);
 }
 
+/**
+ * print_string - a function that print strings
+ * @str: pointer to the string to be printed
+ */
 void print_string(char *str)
 {
 	int i = 0;
 
 	while (str[i] != '\0')
 	{
-		putchar(str[i]);
+		_putchar(str[i]);
 		i++;
 	}
 }
 
+/**
+ * _printf - a function that produces output according to a format
+ * @format: first argument
+ * @...: other variadic arguments
+ *
+ * Return: length of the characters printed
+ */
 int _printf(const char *format, ...)
 {
 	int i = 0;
 	int len = 0;
 	va_list ap;
-	char ch;
-	char *str;
+	char ch, *str;
 
 	if (format == NULL)
 		exit(1);
-
 	va_start(ap, format);
-
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
@@ -42,36 +52,26 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '\0')
 				break;
-
 			if (format[i] == 'c')
 			{
 				ch = (char)va_arg(ap, int);
 				print_char(ch);
 			}
-
 			else if (format[i] == 's')
 			{
 				str = (va_arg(ap, char *));
 				print_string(str);
 			}
-
 			else if (format[i] == '%')
-			{
-				putchar('%');
-			}
-
+				_putchar('%');
 			else
-			{
-				putchar('%');
-				putchar(format[i]);
-			}
+			{ ; }
 		}
 		else
-			putchar(format[i]);
+			_putchar(format[i]);
 		i++;
 		len++;
 	}
 	va_end(ap);
-
 	return (len - 1);
 }
