@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdarg.h>
-#include <unistd.h>
 
 /**
  * print_char - a function that prints single character
@@ -69,12 +68,12 @@ int _printf(const char *format, ...)
 			else if (format[i] == 'd')
 			{
 				dubl = va_arg(ap, double);
-				write(sizeof(double), &dubl, sizeof(double));
+				print_int(dubl);
 			}
 			else if (format[i] == 'i')
 			{
 				num = va_arg(ap, int);
-				write(sizeof(int), &num, sizeof(int));
+				print_int(num);
 			}
 			else
 				handle_other(&format[i], ap);
