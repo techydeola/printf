@@ -56,31 +56,21 @@ int _printf(const char *format, ...)
 			{
 				ch = (char)va_arg(ap, int);
 				print_char(ch);
-				len++
 			}
 			else if (format[i] == 's')
 			{
 				str = (va_arg(ap, char *));
 				print_string(str);
-				len += strlen(str);
 			}
 			else if (format[i] == '%')
-			{
 				_putchar('%');
-				len++;
-			}
 			else
-			{
-				len++;
 				handle_other(&format[i], ap);
-			}
 		}
 		else
-		{
 			_putchar(format[i]);
-			len++;
-		}
 		i++;
+		len++;
 	}
 	va_end(ap);
 	return (len);
