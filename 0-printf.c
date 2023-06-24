@@ -39,6 +39,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int len = 0;
+	int dubl, int num;
 	va_list ap;
 	char ch, *str;
 
@@ -64,6 +65,16 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 				_putchar('%');
+			else if (format[i] == 'd')
+			{
+				dubl = va_arg(ap, double);
+				write(1, &dubl, sizeof(double));
+			}
+			else if (format[i] == 'i')
+			{
+				num = va_arg(ap, int);
+				write(1, &num, sizeof(int));
+			}
 			else
 				handle_other(&format[i], ap);
 		}
