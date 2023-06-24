@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 	char ch, *str;
 
 	if (format == NULL)
-		exit(1);
+		return (0);
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{
@@ -84,5 +84,5 @@ int _printf(const char *format, ...)
 		len++;
 	}
 	va_end(ap);
-	return (len - 1);
+	return (len);
 }

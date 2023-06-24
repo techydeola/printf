@@ -30,4 +30,7 @@ void handle_other(const char *format, va_list ap)
 		if (!flag)
 			_putchar('0');
 	}
+	else
+		return;
+	va_end(ap);
 }
