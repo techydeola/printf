@@ -1,16 +1,19 @@
 #include "main.h"
-/**
+
+/** print_int - a function that prints an integer number
+ * @num: number to be printed
  */
-void print_int(int a)
+
+void print_int(int num)
 {
-	if (a != '\0')
+	if (num != '\0')
 	{
-		if (a <= 9)
-			_putchar(a + '0');
-		else if (a >= 10 && a <= 99)
+		if (num <= 9)
+			_putchar(num + '0');
+		else if (num >= 10 && num <= 99)
 		{
-			_putchar((a / 10) + '0');
-			_putchar((a % 10) + '0');
+			_putchar((num / 10) + '0');
+			_putchar((num % 10) + '0');
 		}
 	}
 }
