@@ -13,9 +13,9 @@ void handle_other(const char *format, va_list ap)
 	{
 		unsigned int num = va_arg(ap, unsigned int);
 		int cont = 0;
-		int i = 31;
+		int i;
 
-		for (i; i >= 0; i--)
+		for (i = 31; i >= 0; i--)
 		{
 			int digit = (num >> 1) & 1;
 

@@ -64,7 +64,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == '\0')
-				break;
+				return(-1);
 			if (format[i] == 'c')
 			{
 				ch = (char)va_arg(ap, int);
