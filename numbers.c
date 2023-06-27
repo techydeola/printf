@@ -5,17 +5,42 @@
 /**
  * print_int - function that prints an integer
  * @a: passed integer
+ *
+ * Return: (i)
  */
-void print_int(int a)
+
+int print_int(int a)
 {
-	if (a != '\0')
+	int i = 0, exp = 1;
+	int num = a;
+	int n = a;
+
+	if (n < 0)
 	{
-		if (a <= 9)
-			_putchar(a + '0');
-		else if (a >= 10 && a <= 99)
-		{
-			_putchar((a / 10) + '0');
-			_putchar((a % 10) + '0');
-		}
+		_putchar('-');
+		num = -num;
+		i++;
 	}
+
+	while (num / 10 != 0)
+	{
+		exp *= 10;
+		num /= 10;
+	}
+
+	num = n;
+
+	while (exp > 0)
+	{
+		int digit = num / exp;
+
+		_putchar(digit + '0');
+		num -= digit * exp;
+		exp /= 10;
+		i++;
+	}
+
+	i++;
+
+	return (i);
 }
