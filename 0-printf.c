@@ -6,39 +6,48 @@
  * print_char - a function that prints single character
  * @ch: character to be printed
  *
+ * Return: (1)
  */
 
-void print_char(char ch)
+int print_char(char ch)
 {
 	_putchar(ch);
+	return (1);
 }
 
 /**
  * print_string - a function that print strings
  * @str: pointer to the string to be printed
  */
-void print_string(char *str)
+int print_string(char *str)
 {
 	int i = 0;
+	int len;
 
 	if (str == NULL)
 	{
 		const char *nullstr = "(null)";
 
+		len = _strlen(str);
+
 		while (nullstr[i] != '\0')
 		{
 			_putchar(nullstr[i]);
 			i++;
+			return (len);
 		}
 	}
 	else
 	{
 		while (str[i] != '\0')
 		{
+			len = _strlen(str);
+
 			_putchar(str[i]);
 			i++;
 		}
 	}
+	return (len);
 }
 
 /**
@@ -64,7 +73,7 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			if (format[i] == '\0')
-				return(-1);
+				return (-1);
 			if (format[i] == 'c')
 			{
 				ch = (char)va_arg(ap, int);
