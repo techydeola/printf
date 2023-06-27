@@ -30,6 +30,16 @@ void handle_other(const char *format, va_list ap)
 		if (!flag)
 			_putchar('0');
 	}
+	if (*format == 'd')
+	{
+		int num = va_arg(ap, int);
+		print_int(num);
+	}
+	if (*format == 'i')
+	{
+		int num = va_arg(ap, int);
+		print_int(num);
+	}
 	else
 		return;
 	va_end(ap);

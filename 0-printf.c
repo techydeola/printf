@@ -21,10 +21,23 @@ void print_string(char *str)
 {
 	int i = 0;
 
-	while (str[i] != '\0')
+	if (str == NULL)
 	{
-		_putchar(str[i]);
-		i++;
+		const char *nullstr = "(null)";
+
+		while (nullstr[i] != '\0')
+		{
+			_putchar(nullstr[i]);
+			i++;
+		}
+	}
+	else
+	{
+		while (str[i] != '\0')
+		{
+			_putchar(str[i]);
+			i++;
+		}
 	}
 }
 
@@ -42,8 +55,8 @@ int _printf(const char *format, ...)
 	va_list ap;
 	char ch, *str;
 
-	if (format == NULL)
-		return (0);
+	if (format == NULL || (format[0] == '%' && format [1] == '\0'))
+		return (-1);
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{
