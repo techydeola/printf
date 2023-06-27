@@ -55,7 +55,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	char ch, *str;
 
-	if (format == NULL || (format[0] == '%' && format [1] == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(ap, format);
 	while (format[i] != '\0')
@@ -68,11 +68,13 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				ch = (char)va_arg(ap, int);
+
 				print_char(ch);
 			}
 			else if (format[i] == 's')
 			{
 				str = (va_arg(ap, char *));
+
 				print_string(str);
 			}
 			else if (format[i] == '%')

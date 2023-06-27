@@ -11,33 +11,37 @@ void handle_other(const char *format, va_list ap)
 {
 	if (*format == 'b')
 	{
-		int num = va_arg(ap, int);
-		int i, size = sizeof(int) * 8;
-		int bit;
-		unsigned int mask = 1U << (size - 1);
-		int flag = 0;
+		unsigned int num = va_arg(ap, unsigned int);
+		int cont = 0;
+		int i = 31;
 
-		for (i = 0; i < size; i++)
+		for (i; i >= 0; i--)
 		{
-			bit = (num & mask) ? 1 : 0;
-			if (bit || flag)
+			int digit = (num >> 1) & 1;
+
+			if (digit || cont > 0)
 			{
-				_putchar('0' + bit);
-				flag = 1;
+				_putchar(digit + '0');
+				cont++;
 			}
-			mask >>= 1;
 		}
-		if (!flag)
+
+		if (cont == 0)
+		{
 			_putchar('0');
+			cont++;
+		}
 	}
 	if (*format == 'd')
 	{
 		int num = va_arg(ap, int);
+
 		print_int(num);
 	}
 	if (*format == 'i')
 	{
 		int num = va_arg(ap, int);
+
 		print_int(num);
 	}
 	else
